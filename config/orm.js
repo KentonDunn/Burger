@@ -66,7 +66,7 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, [table, burgerNameCol, newBurgerName], function (err, result) {
+        connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -79,11 +79,11 @@ var orm = {
 
     updateOne: function (table, objColVals, condition, cb) {
         //var queryString = "Update ?? SET devoured = true WHERE ?? = ?";
-        var queryString = "UPDATE" + table;
+        var queryString = "UPDATE " + table;
 
         queryString += " SET ";
         queryString += objToSql(objColVals);
-        queryString += " WHERE";
+        queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
